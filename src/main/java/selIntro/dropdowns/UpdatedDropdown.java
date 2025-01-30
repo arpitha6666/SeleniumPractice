@@ -1,4 +1,4 @@
-package selIntro;
+package selIntro.dropdowns;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -7,18 +7,22 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
-public class LocatorsSiblingsParentTraverse {
+public class UpdatedDropdown {
     public static void main(String[] args) throws InterruptedException {
-        String userName = "rahul";
         WebDriverManager.firefoxdriver().setup();
         WebDriver driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-        System.out.println(driver.findElement(By.xpath("//header/div/button[1]/following-sibling::button[1]")).getText());
-       // driver.findElement(By.xpath("//header/div/button[1]/following-sibling::button[1]")).click();
+        driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+        Thread.sleep(2000);
+        driver.findElement(By.id("divpaxinfo")).click();
         Thread.sleep(1000);
-        System.out.println(driver.findElement(By.xpath("//header/div/button[1]/parent::div/button[2]")).getText());
+        for(int i=0;i<4;i++) {
+            driver.findElement(By.id("hrefIncAdt")).click();
+        }
+        driver.findElement(By.id("btnclosepaxoption")).click();
+        System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
+        Thread.sleep(1000);
         driver.close();
         driver.quit();
     }
