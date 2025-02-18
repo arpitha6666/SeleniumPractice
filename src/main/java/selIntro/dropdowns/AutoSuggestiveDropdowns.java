@@ -22,12 +22,12 @@ public class AutoSuggestiveDropdowns {
         //scan the suggested options
         //parent child traverse
         List<WebElement> options = driver.findElements(By.cssSelector("li[class='ui-menu-item'] a"));
-        for(WebElement element : options){
-           if(element.getText().equalsIgnoreCase("India")){
-               element.click();
-               break;
+            for(WebElement element : options){
+               if(element.getText().equalsIgnoreCase("India")){
+                   element.click();
+                   break;
+                }
             }
-        }
         driver.close();
         driver.quit();
     }
